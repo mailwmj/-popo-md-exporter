@@ -1,0 +1,192 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>POPO Doc to Markdown 设置</title>
+    <style>
+      body {
+        margin: 0;
+        padding: 32px;
+        font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+        background: linear-gradient(180deg, #f8fafc 0%, #eef4ff 100%);
+        color: #0f172a;
+      }
+
+      .panel {
+        max-width: 760px;
+        margin: 0 auto;
+        background: #ffffff;
+        border-radius: 20px;
+        padding: 32px;
+        box-shadow: 0 20px 60px rgba(15, 23, 42, 0.10);
+      }
+
+      .hero {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 16px;
+        flex-wrap: wrap;
+      }
+
+      h1 {
+        margin: 0 0 10px;
+        font-size: 30px;
+      }
+
+      p {
+        line-height: 1.7;
+        color: #334155;
+        margin: 0;
+      }
+
+      .badge {
+        display: inline-flex;
+        align-items: center;
+        border-radius: 999px;
+        padding: 8px 12px;
+        font-size: 13px;
+        font-weight: 700;
+        background: #e2e8f0;
+        color: #334155;
+      }
+
+      .badge[data-variant='success'] {
+        background: #dcfce7;
+        color: #166534;
+      }
+
+      .badge[data-variant='warning'] {
+        background: #fef3c7;
+        color: #92400e;
+      }
+
+      .section {
+        margin-top: 28px;
+        padding-top: 28px;
+        border-top: 1px solid #e2e8f0;
+      }
+
+      .card {
+        border: 1px solid #dbeafe;
+        background: #f8fbff;
+        border-radius: 16px;
+        padding: 18px;
+      }
+
+      .row {
+        display: flex;
+        gap: 12px;
+        align-items: center;
+        flex-wrap: wrap;
+      }
+
+      .folder {
+        display: inline-flex;
+        align-items: center;
+        min-height: 44px;
+        padding: 0 14px;
+        border-radius: 12px;
+        background: #eff6ff;
+        color: #1d4ed8;
+        font-weight: 700;
+      }
+
+      .muted {
+        margin-top: 12px;
+        font-size: 14px;
+        color: #475569;
+      }
+
+      .steps {
+        margin: 14px 0 0;
+        padding-left: 20px;
+        color: #334155;
+      }
+
+      .steps li + li {
+        margin-top: 8px;
+      }
+
+      button {
+        border: 0;
+        border-radius: 12px;
+        padding: 11px 16px;
+        font-size: 14px;
+        font-weight: 700;
+        cursor: pointer;
+        background: #2563eb;
+        color: #ffffff;
+      }
+
+      button.ghost {
+        background: #e2e8f0;
+        color: #0f172a;
+      }
+
+      button:disabled {
+        opacity: 0.55;
+        cursor: not-allowed;
+      }
+
+      #status {
+        margin-top: 24px;
+        padding: 14px 16px;
+        border-radius: 12px;
+        background: #e2e8f0;
+        color: #0f172a;
+        font-weight: 600;
+      }
+
+      #status[data-variant='success'] {
+        background: #dcfce7;
+        color: #166534;
+      }
+
+      #status[data-variant='error'] {
+        background: #fee2e2;
+        color: #b91c1c;
+      }
+
+      #status[data-variant='warning'] {
+        background: #fef3c7;
+        color: #92400e;
+      }
+    </style>
+  </head>
+  <body>
+    <main class="panel">
+      <section class="hero">
+        <div>
+          <h1>POPO 图片导出设置</h1>
+          <p>这里只做一件事，选好一个图片附件目录。之后你在 POPO 页面点一下扩展图标，正文会复制到剪贴板，图片会自动写进这个目录。</p>
+        </div>
+        <span id="setup-badge" class="badge" data-variant="info">检查中</span>
+      </section>
+
+      <section class="section">
+        <div class="card">
+          <div class="row">
+            <span id="folder-name" class="folder">未选择文件夹</span>
+            <button id="choose-folder-button" data-default-label="选择附件目录">选择附件目录</button>
+            <button id="reset-button" class="ghost">清除设置</button>
+          </div>
+          <p id="folder-hint" class="muted">先授权一个可写目录。之后在 POPO 页面点扩展图标，图片会自动写进这里。</p>
+        </div>
+      </section>
+
+      <section class="section">
+        <p>使用步骤：</p>
+        <ol class="steps">
+          <li>点击“选择附件目录”，授权一个 Obsidian 可用的图片目录</li>
+          <li>回到已登录的 POPO 文档页面</li>
+          <li>点击扩展图标，等待页面右上角出现复制结果提示</li>
+        </ol>
+      </section>
+
+      <div id="status" data-variant="info"></div>
+    </main>
+    <script type="module" src="./options.js"></script>
+  </body>
+</html>

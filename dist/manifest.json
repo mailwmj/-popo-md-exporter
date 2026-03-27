@@ -1,0 +1,42 @@
+{
+  "manifest_version": 3,
+  "name": "POPO Doc to Markdown",
+  "version": "0.1.0",
+  "description": "抓取当前 POPO 文档页面内容并复制为 Markdown，同时导出图片附件",
+  "permissions": ["activeTab", "scripting", "clipboardWrite", "storage", "offscreen"],
+  "options_page": "options.html",
+  "host_permissions": [
+    "https://docs.popo.netease.com/*",
+    "https://office.netease.com/*"
+  ],
+  "background": {
+    "service_worker": "background.js",
+    "type": "module"
+  },
+  "action": {
+    "default_title": "复制当前 POPO 文档为 Markdown",
+    "default_icon": {
+      "16": "icon-16.png",
+      "32": "icon-32.png",
+      "48": "icon-48.png",
+      "128": "icon-128.png"
+    }
+  },
+  "icons": {
+    "16": "icon-16.png",
+    "32": "icon-32.png",
+    "48": "icon-48.png",
+    "128": "icon-128.png"
+  },
+  "content_scripts": [
+    {
+      "matches": [
+        "https://docs.popo.netease.com/*",
+        "https://office.netease.com/*"
+      ],
+      "js": ["content-script.js"],
+      "run_at": "document_idle",
+      "all_frames": true
+    }
+  ]
+}

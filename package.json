@@ -1,0 +1,18 @@
+{
+  "name": "popo-doc-to-md",
+  "version": "0.1.0",
+  "description": "POPO 文档 Chrome 插件，抓取当前页面内容并复制为 Markdown",
+  "type": "module",
+  "scripts": {
+    "build": "node ./scripts/build.mjs"
+  },
+  "dependencies": {
+    "turndown": "^7.2.0"
+  },
+  "devDependencies": {
+    "@types/chrome": "^0.1.29",
+    "@types/turndown": "^5.0.5",
+    "esbuild": "^0.25.3",
+    "typescript": "^5.6.0"
+  }
+}
